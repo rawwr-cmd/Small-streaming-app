@@ -13,8 +13,8 @@ class GoogleAuth extends Component {
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
-          this.onAuthChange(this.auth.isSignedIn.get());
-          this.auth.isSignedIn.listen(this.OnAuthStateChange);
+          this.OnAuthChange(this.auth.isSignedIn.get());
+          this.auth.isSignedIn.listen(this.OnAuthChange);
         });
     });
   }
@@ -36,6 +36,7 @@ class GoogleAuth extends Component {
   };
 
   renderAuthButton() {
+    // console.log(this.props);
     if (this.props.isSignedIn === null) {
       return null;
     } else if (this.props.isSignedIn) {
@@ -69,6 +70,7 @@ class GoogleAuth extends Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log(state);
   return { isSignedIn: state.auth.isSignedIn };
 };
 
