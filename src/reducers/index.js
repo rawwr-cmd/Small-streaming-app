@@ -1,3 +1,4 @@
 import { combineReducers } from "redux";
+import authReducer from "./authReducer";
 
-export default combineReducers({ posts: () => "hi there" });
+export default combineReducers({ auth: authReducer });
