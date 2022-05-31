@@ -1,21 +1,24 @@
 import { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 class StreamCreator extends Component {
-  renderList(formProps) {
-    // console.log(formProps);
+  renderList({ input, label }) {
     return (
-      <input
-        onChange={formProps.input.onChange}
-        value={formProps.input.value}
-      />
+      <div className="field">
+        <label>{label}</label>
+        <input {...input} />
+      </div>
     );
   }
 
   render() {
     return (
-      <form>
-        <Field name="title" component={this.renderList} />
-        <Field name="description" component={this.renderList} />
+      <form className="ui form">
+        <Field name="title" component={this.renderList} label="Enter Title" />
+        <Field
+          name="description"
+          component={this.renderList}
+          label="Enter Description"
+        />
       </form>
     );
   }
