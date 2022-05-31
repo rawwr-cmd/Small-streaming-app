@@ -10,15 +10,24 @@ class StreamCreator extends Component {
     );
   }
 
+  onSubmit(formValues) {
+    console.log(formValues);
+  }
+
   render() {
+    // console.log(this.props);
     return (
-      <form className="ui form">
+      <form
+        onSubmit={this.props.handleSubmit(this.onSubmit)}
+        className="ui form"
+      >
         <Field name="title" component={this.renderList} label="Enter Title" />
         <Field
           name="description"
           component={this.renderList}
           label="Enter Description"
         />
+        <button className="ui button primary">Submit</button>
       </form>
     );
   }
