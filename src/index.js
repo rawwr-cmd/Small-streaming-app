@@ -7,10 +7,11 @@ import {
   applyMiddleware,
   compose,
 } from "redux";
+import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const enhancer = composeEnhancers(applyMiddleware());
+const enhancer = composeEnhancers(applyMiddleware(reduxThunk));
 const store = createStore(reducers, enhancer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
