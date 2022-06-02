@@ -34,7 +34,6 @@ class StreamList extends Component {
 
 const mapStateToProps = (state) => {
   //object to arrays
-  // console.log(Object.values(state.streams));
   return { streams: Object.values(state.streams) };
 };
 
