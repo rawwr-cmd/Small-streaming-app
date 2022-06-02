@@ -11,6 +11,7 @@ import {
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_STREAMS:
+      //converting array into obj
       return { ...state, ..._.mapKeys(action.payload, "id") };
 
     case FETCH_STREAM:
