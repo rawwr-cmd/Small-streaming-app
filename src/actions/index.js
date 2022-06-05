@@ -1,4 +1,5 @@
 import streams from "../apis/streams";
+import { withRouter } from "../withRouter";
 
 import {
   SIGN_IN,
