@@ -2,7 +2,6 @@ import { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { createStream } from "../../actions";
-import { withRouter } from "../../withRouter";
 class StreamCreator extends Component {
   renderError({ error, touched }) {
     if (touched && error) {
@@ -26,13 +25,9 @@ class StreamCreator extends Component {
     );
   };
 
-  onSubmit = async (formValues) => {
+  onSubmit = (formValues) => {
     // console.log(this.props);
-    await this.props.createStream(formValues);
-  };
-
-  onNavigate = async () => {
-    await this.props.navigate("/");
+    this.props.createStream(formValues);
   };
 
   render() {
@@ -47,9 +42,7 @@ class StreamCreator extends Component {
           component={this.renderList}
           label="Enter Description"
         />
-        <button className="ui button primary" onClick={this.onNavigate}>
-          Submit
-        </button>
+        <button className="ui button primary">Submit</button>
       </form>
     );
   }
@@ -69,7 +62,8 @@ const validate = (formValues) => {
   return errors;
 };
 
-const wrapper = withRouter(StreamCreator);
-const formWrapped = reduxForm({ form: "streamCreate", validate })(wrapper);
+const formWrapped = reduxForm({ form: "streamCreate", validate })(
+  StreamCreator
+);
 
 export default connect(null, { createStream })(formWrapped);

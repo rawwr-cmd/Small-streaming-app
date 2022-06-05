@@ -6,7 +6,6 @@ import StreamEdit from "./streams/StreamEdit";
 import StreamList from "./streams/StreamList";
 import StreamShow from "./streams/StreamShow";
 import Header from "./Header";
-import { useNavigate } from "react-router-dom";
 const App = () => {
   return (
     <div className="ui container">
@@ -15,7 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<StreamList />} />
           <Route path="/streams/create" element={<StreamCreate />} />
-          <Route path="/streams/edit" element={<StreamEdit />} />
+          <Route path="/streams/edit/:id" element={<StreamEdit />} />
           <Route path="/streams/delete" element={<StreamDelete />} />
           <Route path="/streams/show" element={<StreamShow />} />
         </Routes>
